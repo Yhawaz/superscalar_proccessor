@@ -1,0 +1,259 @@
+=== Generated schedule for mkScoreboard ===
+
+Method schedule
+---------------
+Method: insert
+Ready signal: True
+Sequenced before: search3, search4, insert1
+Sequenced after: search1, search2, remove1, remove2, remove3, remove4
+Conflicts: insert
+ 
+Method: search1
+Ready signal: True
+Conflict-free: search1, search2, search3, search4
+Sequenced before: insert, insert1
+Sequenced after: remove1, remove2, remove3, remove4
+ 
+Method: search2
+Ready signal: True
+Conflict-free: search1, search2, search3, search4
+Sequenced before: insert, insert1
+Sequenced after: remove1, remove2, remove3, remove4
+ 
+Method: remove1
+Ready signal: True
+Sequenced before: insert,
+		  search1,
+		  search2,
+		  remove2,
+		  remove3,
+		  remove4,
+		  search3,
+		  search4,
+		  insert1
+Conflicts: remove1
+ 
+Method: remove2
+Ready signal: True
+Sequenced before: insert,
+		  search1,
+		  search2,
+		  remove3,
+		  remove4,
+		  search3,
+		  search4,
+		  insert1
+Sequenced after: remove1
+Conflicts: remove2
+ 
+Method: remove3
+Ready signal: True
+Sequenced before: insert, search1, search2, remove4, search3, search4, insert1
+Sequenced after: remove1, remove2
+Conflicts: remove3
+ 
+Method: remove4
+Ready signal: True
+Sequenced before: insert, search1, search2, search3, search4, insert1
+Sequenced after: remove1, remove2, remove3
+Conflicts: remove4
+ 
+Method: search3
+Ready signal: True
+Conflict-free: search1, search2, search3, search4
+Sequenced before: insert1
+Sequenced after: insert, remove1, remove2, remove3, remove4
+ 
+Method: search4
+Ready signal: True
+Conflict-free: search1, search2, search3, search4
+Sequenced before: insert1
+Sequenced after: insert, remove1, remove2, remove3, remove4
+ 
+Method: insert1
+Ready signal: True
+Sequenced after: insert,
+		 search1,
+		 search2,
+		 remove1,
+		 remove2,
+		 remove3,
+		 remove4,
+		 search3,
+		 search4
+Conflicts: insert1
+ 
+Rule schedule
+-------------
+Rule: buff_0_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_3_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_4_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_5_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_6_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_7_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_8_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_9_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_10_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_11_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_12_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_13_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_14_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_15_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_16_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_17_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_18_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_19_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_20_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_21_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_22_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_23_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_24_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_25_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_26_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_27_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_28_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_29_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_30_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: buff_31_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: remove1,
+			 remove2,
+			 remove3,
+			 remove4,
+			 search1,
+			 search2,
+			 insert,
+			 search3,
+			 search4,
+			 insert1,
+			 buff_0_canonicalize,
+			 buff_1_canonicalize,
+			 buff_2_canonicalize,
+			 buff_3_canonicalize,
+			 buff_4_canonicalize,
+			 buff_5_canonicalize,
+			 buff_6_canonicalize,
+			 buff_7_canonicalize,
+			 buff_8_canonicalize,
+			 buff_9_canonicalize,
+			 buff_10_canonicalize,
+			 buff_11_canonicalize,
+			 buff_12_canonicalize,
+			 buff_13_canonicalize,
+			 buff_14_canonicalize,
+			 buff_15_canonicalize,
+			 buff_16_canonicalize,
+			 buff_17_canonicalize,
+			 buff_18_canonicalize,
+			 buff_19_canonicalize,
+			 buff_20_canonicalize,
+			 buff_21_canonicalize,
+			 buff_22_canonicalize,
+			 buff_23_canonicalize,
+			 buff_24_canonicalize,
+			 buff_25_canonicalize,
+			 buff_26_canonicalize,
+			 buff_27_canonicalize,
+			 buff_28_canonicalize,
+			 buff_29_canonicalize,
+			 buff_30_canonicalize,
+			 buff_31_canonicalize
+
+============================================

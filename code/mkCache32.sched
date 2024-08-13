@@ -1,0 +1,243 @@
+=== Generated schedule for mkCache32 ===
+
+Method schedule
+---------------
+Method: putFromProc
+Ready signal: curReq.i_notFull
+Conflict-free: getToProc, getToMem, putFromMem
+Conflicts: putFromProc
+ 
+Method: getToProc
+Ready signal: toProc_rv.port1__read[32]
+Conflict-free: putFromProc, getToMem
+Sequenced after (restricted): putFromMem
+Conflicts: getToProc
+ 
+Method: getToMem
+Ready signal: toMem_rv.port1__read[539]
+Conflict-free: putFromProc, getToProc
+Sequenced after (restricted): putFromMem
+Conflicts: getToMem
+ 
+Method: putFromMem
+Ready signal: ! fromMem_rv.port0__read[512]
+Conflict-free: putFromProc
+Sequenced before (restricted): getToProc, getToMem
+Conflicts: putFromMem
+ 
+Rule schedule
+-------------
+Rule: dataArray_serverAdapter_outData_enqueue
+Predicate: dataArray_serverAdapter_outData_enqw.whas &&
+	   ((! dataArray_serverAdapter_outData_dequeueing.whas) ||
+	    dataArray_serverAdapter_outData_ff.i_notEmpty)
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_outData_dequeue
+Predicate: dataArray_serverAdapter_outData_dequeueing.whas &&
+	   dataArray_serverAdapter_outData_ff.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_cnt_finalAdd
+Predicate: dataArray_serverAdapter_cnt_1.whas ||
+	   dataArray_serverAdapter_cnt_2.whas ||
+	   dataArray_serverAdapter_cnt_3.whas
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_s1__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_stageReadResponseAlways
+Predicate: dataArray_serverAdapter_writeWithResp.whas
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_moveToOutFIFO
+Predicate: ((! dataArray_serverAdapter_s1[0]) ||
+	    dataArray_serverAdapter_outData_ff.i_notFull) &&
+	   dataArray_serverAdapter_s1[1]
+Blocking rules: (none)
+ 
+Rule: dataArray_serverAdapter_overRun
+Predicate: dataArray_serverAdapter_s1[1] &&
+	   ((! dataArray_serverAdapter_outData_beforeEnq.read) ||
+	    (! dataArray_serverAdapter_outData_beforeDeq.read) ||
+	    (! dataArray_serverAdapter_outData_ff.i_notFull))
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_outData_enqueue
+Predicate: tagArray_serverAdapter_outData_enqw.whas &&
+	   ((! tagArray_serverAdapter_outData_dequeueing.whas) ||
+	    tagArray_serverAdapter_outData_ff.i_notEmpty)
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_outData_dequeue
+Predicate: tagArray_serverAdapter_outData_dequeueing.whas &&
+	   tagArray_serverAdapter_outData_ff.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_cnt_finalAdd
+Predicate: tagArray_serverAdapter_cnt_1.whas ||
+	   tagArray_serverAdapter_cnt_2.whas ||
+	   tagArray_serverAdapter_cnt_3.whas
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_s1__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_stageReadResponseAlways
+Predicate: tagArray_serverAdapter_writeWithResp.whas
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_moveToOutFIFO
+Predicate: ((! tagArray_serverAdapter_s1[0]) ||
+	    tagArray_serverAdapter_outData_ff.i_notFull) &&
+	   tagArray_serverAdapter_s1[1]
+Blocking rules: (none)
+ 
+Rule: tagArray_serverAdapter_overRun
+Predicate: tagArray_serverAdapter_s1[1] &&
+	   ((! tagArray_serverAdapter_outData_beforeEnq.read) ||
+	    (! tagArray_serverAdapter_outData_beforeDeq.read) ||
+	    (! tagArray_serverAdapter_outData_ff.i_notFull))
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_outData_enqueue
+Predicate: statusArray_serverAdapter_outData_enqw.whas &&
+	   ((! statusArray_serverAdapter_outData_dequeueing.whas) ||
+	    statusArray_serverAdapter_outData_ff.i_notEmpty)
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_outData_dequeue
+Predicate: statusArray_serverAdapter_outData_dequeueing.whas &&
+	   statusArray_serverAdapter_outData_ff.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_cnt_finalAdd
+Predicate: statusArray_serverAdapter_cnt_1.whas ||
+	   statusArray_serverAdapter_cnt_2.whas ||
+	   statusArray_serverAdapter_cnt_3.whas
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_s1__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_stageReadResponseAlways
+Predicate: statusArray_serverAdapter_writeWithResp.whas
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_moveToOutFIFO
+Predicate: ((! statusArray_serverAdapter_s1[0]) ||
+	    statusArray_serverAdapter_outData_ff.i_notFull) &&
+	   statusArray_serverAdapter_s1[1]
+Blocking rules: (none)
+ 
+Rule: statusArray_serverAdapter_overRun
+Predicate: statusArray_serverAdapter_s1[1] &&
+	   ((! statusArray_serverAdapter_outData_beforeEnq.read) ||
+	    (! statusArray_serverAdapter_outData_beforeDeq.read) ||
+	    (! statusArray_serverAdapter_outData_ff.i_notFull))
+Blocking rules: (none)
+ 
+Rule: ready
+Predicate: (dataArray_serverAdapter_cnt .< 3'd3) &&
+	   curReq.i_notEmpty &&
+	   (statusArray_serverAdapter_cnt .< 3'd3) &&
+	   (tagArray_serverAdapter_cnt .< 3'd3) &&
+	   (curState == 2'd0)
+Blocking rules: (none)
+ 
+Rule: lookup
+Predicate: statusArray_serverAdapter_outData_beforeDeq.read &&
+	   (statusArray_serverAdapter_outData_ff.i_notEmpty ||
+	    statusArray_serverAdapter_outData_enqw.whas) &&
+	   (dataArray_serverAdapter_outData_ff.i_notEmpty ||
+	    dataArray_serverAdapter_outData_enqw.whas) &&
+	   (tagArray_serverAdapter_outData_ff.i_notEmpty ||
+	    tagArray_serverAdapter_outData_enqw.whas) &&
+	   curReq.i_notEmpty &&
+	   (((statusArray_serverAdapter_outData_ff.i_notEmpty
+	      ? statusArray_serverAdapter_outData_ff.first
+	      : (statusArray_serverAdapter_outData_enqw.whas
+		 ? statusArray_serverAdapter_outData_enqw.wget
+		 : (_ :: Bit 2))) ==
+	     2'd0) ||
+	    tagArray_serverAdapter_outData_beforeDeq.read) &&
+	   (((! ((statusArray_serverAdapter_outData_ff.i_notEmpty
+		  ? statusArray_serverAdapter_outData_ff.first
+		  : (statusArray_serverAdapter_outData_enqw.whas
+		     ? statusArray_serverAdapter_outData_enqw.wget
+		     : (_ :: Bit 2))) ==
+		 2'd0)) &&
+	     ((tagArray_serverAdapter_outData_ff.i_notEmpty
+	       ? tagArray_serverAdapter_outData_ff.first
+	       : (tagArray_serverAdapter_outData_enqw.whas
+		  ? tagArray_serverAdapter_outData_enqw.wget
+		  : (_ :: Bit 19))) ==
+	      curReq.first[63:45]))
+	    ? (! toProc_rv.port0__read[32]) &&
+	      ((curReq.first[67:64] == 4'd0)
+	       ? dataArray_serverAdapter_outData_beforeDeq.read
+	       : ((dataArray_serverAdapter_cnt .< 3'd3) &&
+		  (statusArray_serverAdapter_cnt .< 3'd3)))
+	    : ((! toMem_rv.port0__read[539]) &&
+	       ((! ((statusArray_serverAdapter_outData_ff.i_notEmpty
+		     ? statusArray_serverAdapter_outData_ff.first
+		     : (statusArray_serverAdapter_outData_enqw.whas
+			? statusArray_serverAdapter_outData_enqw.wget
+			: (_ :: Bit 2))) ==
+		    2'd2)) ||
+		(dataArray_serverAdapter_outData_beforeDeq.read &&
+		 tagArray_serverAdapter_outData_beforeDeq.read)))) &&
+	   (curState == 2'd1)
+Blocking rules: (none)
+ 
+Rule: writeback
+Predicate: curReq.i_notEmpty &&
+	   (! toMem_rv.port0__read[539]) && fromMem_rv.port1__read[512] &&
+	   (curState == 2'd2)
+Blocking rules: (none)
+ 
+Rule: allocate
+Predicate: fromMem_rv.port1__read[512] &&
+	   (dataArray_serverAdapter_cnt .< 3'd3) &&
+	   curReq.i_notEmpty &&
+	   (statusArray_serverAdapter_cnt .< 3'd3) &&
+	   (tagArray_serverAdapter_cnt .< 3'd3) &&
+	   (! toProc_rv.port0__read[32]) &&
+	   (curState == 2'd3)
+Blocking rules: (none)
+ 
+Logical execution order: putFromProc,
+			 putFromMem,
+			 ready,
+			 writeback,
+			 allocate,
+			 dataArray_serverAdapter_overRun,
+			 dataArray_serverAdapter_moveToOutFIFO,
+			 tagArray_serverAdapter_stageReadResponseAlways,
+			 tagArray_serverAdapter_overRun,
+			 tagArray_serverAdapter_moveToOutFIFO,
+			 tagArray_serverAdapter_s1__dreg_update,
+			 statusArray_serverAdapter_overRun,
+			 statusArray_serverAdapter_moveToOutFIFO,
+			 lookup,
+			 getToProc,
+			 getToMem,
+			 dataArray_serverAdapter_stageReadResponseAlways,
+			 dataArray_serverAdapter_outData_enqueue,
+			 dataArray_serverAdapter_outData_dequeue,
+			 dataArray_serverAdapter_cnt_finalAdd,
+			 dataArray_serverAdapter_s1__dreg_update,
+			 tagArray_serverAdapter_outData_enqueue,
+			 tagArray_serverAdapter_outData_dequeue,
+			 tagArray_serverAdapter_cnt_finalAdd,
+			 statusArray_serverAdapter_stageReadResponseAlways,
+			 statusArray_serverAdapter_outData_enqueue,
+			 statusArray_serverAdapter_outData_dequeue,
+			 statusArray_serverAdapter_cnt_finalAdd,
+			 statusArray_serverAdapter_s1__dreg_update
+
+=========================================

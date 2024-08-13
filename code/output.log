@@ -1,0 +1,895 @@
+Kanata	0004
+C=	1
+I	              0	              0	  0
+S	              0	          0	F
+I	              1	              1	  0
+S	              1	          0	F
+L	              0	          0	F 0x00000000 at cycle     1  
+L	              1	          0	F 0x00000004 at cycle     1  
+C	1
+I	              2	              2	  0
+S	              2	          0	F
+I	              3	              3	  0
+S	              3	          0	F
+L	              2	          0	F 0x00000008 at cycle     2  
+L	              3	          0	F 0x0000000c at cycle     2  
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+S	              0	          0	D
+L	              0	          0	D pc: 0x00000000 at cycle    25 
+S	              1	          0	D
+L	              1	          0	D pc: 0x00000004 at cycle    25 
+C	1
+S	              0	          0	E
+L	              0	          0	E (ALU) at pc: 0x00000000 at cycle    26 , inst: 0x00000093
+I	              4	              4	  0
+S	              4	          0	F
+I	              5	              5	  0
+S	              5	          0	F
+L	              4	          0	F 0x00000010 at cycle    26  
+L	              5	          0	F 0x00000014 at cycle    26  
+S	              1	          0	E
+L	              1	          0	E (ALU) at pc: 0x00000004 at cycle    26 , inst: 0x00000113
+C	1
+S	              0	          0	W
+L	              0	          0	 W at cycle    27
+S	              1	          0	W
+L	              1	          0	 W at cycle    27
+S	              2	          0	D
+L	              2	          0	D pc: 0x00000008 at cycle    27 
+S	              3	          0	D
+L	              3	          0	D pc: 0x0000000c at cycle    27 
+C	1
+S	              2	          0	E
+L	              2	          0	E (ALU) at pc: 0x00000008 at cycle    28 , inst: 0x00000193
+I	              6	              6	  0
+S	              6	          0	F
+I	              7	              7	  0
+S	              7	          0	F
+L	              6	          0	F 0x00000018 at cycle    28  
+L	              7	          0	F 0x0000001c at cycle    28  
+S	              3	          0	E
+L	              3	          0	E (ALU) at pc: 0x0000000c at cycle    28 , inst: 0x00000213
+S	              4	          0	D
+L	              4	          0	D pc: 0x00000010 at cycle    28 
+S	              5	          0	D
+L	              5	          0	D pc: 0x00000014 at cycle    28 
+R	              1	              0	          0
+R	              0	              1	          0
+C	1
+S	              2	          0	W
+L	              2	          0	 W at cycle    29
+S	              3	          0	W
+L	              3	          0	 W at cycle    29
+S	              4	          0	E
+L	              4	          0	E (ALU) at pc: 0x00000010 at cycle    29 , inst: 0x00000293
+I	              8	              8	  0
+S	              8	          0	F
+I	              9	              9	  0
+S	              9	          0	F
+L	              8	          0	F 0x00000020 at cycle    29  
+L	              9	          0	F 0x00000024 at cycle    29  
+S	              5	          0	E
+L	              5	          0	E (ALU) at pc: 0x00000014 at cycle    29 , inst: 0x00000313
+S	              6	          0	D
+L	              6	          0	D pc: 0x00000018 at cycle    29 
+S	              7	          0	D
+L	              7	          0	D pc: 0x0000001c at cycle    29 
+C	1
+S	              4	          0	W
+L	              4	          0	 W at cycle    30
+S	              5	          0	W
+L	              5	          0	 W at cycle    30
+S	              6	          0	E
+L	              6	          0	E (ALU) at pc: 0x00000018 at cycle    30 , inst: 0x00000393
+I	             10	             10	  0
+S	             10	          0	F
+I	             11	             11	  0
+S	             11	          0	F
+L	             10	          0	F 0x00000028 at cycle    30  
+L	             11	          0	F 0x0000002c at cycle    30  
+S	              7	          0	E
+L	              7	          0	E (ALU) at pc: 0x0000001c at cycle    30 , inst: 0x00000413
+S	              8	          0	D
+L	              8	          0	D pc: 0x00000020 at cycle    30 
+S	              9	          0	D
+L	              9	          0	D pc: 0x00000024 at cycle    30 
+R	              3	              2	          0
+R	              2	              3	          0
+C	1
+S	              6	          0	W
+L	              6	          0	 W at cycle    31
+S	              7	          0	W
+L	              7	          0	 W at cycle    31
+S	              8	          0	E
+L	              8	          0	E (ALU) at pc: 0x00000020 at cycle    31 , inst: 0x00000493
+I	             12	             12	  0
+S	             12	          0	F
+I	             13	             13	  0
+S	             13	          0	F
+L	             12	          0	F 0x00000030 at cycle    31  
+L	             13	          0	F 0x00000034 at cycle    31  
+S	              9	          0	E
+L	              9	          0	E (ALU) at pc: 0x00000024 at cycle    31 , inst: 0x00000513
+S	             10	          0	D
+L	             10	          0	D pc: 0x00000028 at cycle    31 
+S	             11	          0	D
+L	             11	          0	D pc: 0x0000002c at cycle    31 
+R	              5	              4	          0
+R	              4	              5	          0
+C	1
+S	              8	          0	W
+L	              8	          0	 W at cycle    32
+S	              9	          0	W
+L	              9	          0	 W at cycle    32
+S	             10	          0	E
+L	             10	          0	E (ALU) at pc: 0x00000028 at cycle    32 , inst: 0x00000593
+I	             14	             14	  0
+S	             14	          0	F
+I	             15	             15	  0
+S	             15	          0	F
+L	             14	          0	F 0x00000038 at cycle    32  
+L	             15	          0	F 0x0000003c at cycle    32  
+S	             11	          0	E
+L	             11	          0	E (ALU) at pc: 0x0000002c at cycle    32 , inst: 0x00000613
+S	             12	          0	D
+L	             12	          0	D pc: 0x00000030 at cycle    32 
+S	             13	          0	D
+L	             13	          0	D pc: 0x00000034 at cycle    32 
+R	              7	              6	          0
+R	              6	              7	          0
+C	1
+S	             10	          0	W
+L	             10	          0	 W at cycle    33
+S	             11	          0	W
+L	             11	          0	 W at cycle    33
+S	             12	          0	E
+L	             12	          0	E (ALU) at pc: 0x00000030 at cycle    33 , inst: 0x00000693
+I	             16	             16	  0
+S	             16	          0	F
+I	             17	             17	  0
+S	             17	          0	F
+L	             16	          0	F 0x00000040 at cycle    33  
+L	             17	          0	F 0x00000044 at cycle    33  
+S	             13	          0	E
+L	             13	          0	E (ALU) at pc: 0x00000034 at cycle    33 , inst: 0x00000713
+S	             14	          0	D
+L	             14	          0	D pc: 0x00000038 at cycle    33 
+S	             15	          0	D
+L	             15	          0	D pc: 0x0000003c at cycle    33 
+R	              9	              8	          0
+R	              8	              9	          0
+C	1
+S	             12	          0	W
+L	             12	          0	 W at cycle    34
+S	             13	          0	W
+L	             13	          0	 W at cycle    34
+S	             14	          0	E
+L	             14	          0	E (ALU) at pc: 0x00000038 at cycle    34 , inst: 0x00000793
+I	             18	             18	  0
+S	             18	          0	F
+I	             19	             19	  0
+S	             19	          0	F
+L	             18	          0	F 0x00000048 at cycle    34  
+L	             19	          0	F 0x0000004c at cycle    34  
+S	             15	          0	E
+L	             15	          0	E (ALU) at pc: 0x0000003c at cycle    34 , inst: 0x00000813
+R	             11	             10	          0
+R	             10	             11	          0
+C	1
+S	             14	          0	W
+L	             14	          0	 W at cycle    35
+S	             15	          0	W
+L	             15	          0	 W at cycle    35
+R	             13	             12	          0
+R	             12	             13	          0
+C	1
+R	             15	             14	          0
+R	             14	             15	          0
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+S	             16	          0	D
+L	             16	          0	D pc: 0x00000040 at cycle    57 
+S	             17	          0	D
+L	             17	          0	D pc: 0x00000044 at cycle    57 
+C	1
+S	             16	          0	E
+L	             16	          0	E (ALU) at pc: 0x00000040 at cycle    58 , inst: 0x00000893
+I	             20	             20	  0
+S	             20	          0	F
+I	             21	             21	  0
+S	             21	          0	F
+L	             20	          0	F 0x00000050 at cycle    58  
+L	             21	          0	F 0x00000054 at cycle    58  
+S	             17	          0	E
+L	             17	          0	E (ALU) at pc: 0x00000044 at cycle    58 , inst: 0x00000913
+C	1
+S	             16	          0	W
+L	             16	          0	 W at cycle    59
+S	             17	          0	W
+L	             17	          0	 W at cycle    59
+S	             18	          0	D
+L	             18	          0	D pc: 0x00000048 at cycle    59 
+S	             19	          0	D
+L	             19	          0	D pc: 0x0000004c at cycle    59 
+C	1
+S	             18	          0	E
+L	             18	          0	E (ALU) at pc: 0x00000048 at cycle    60 , inst: 0x00000993
+I	             22	             22	  0
+S	             22	          0	F
+I	             23	             23	  0
+S	             23	          0	F
+L	             22	          0	F 0x00000058 at cycle    60  
+L	             23	          0	F 0x0000005c at cycle    60  
+S	             19	          0	E
+L	             19	          0	E (ALU) at pc: 0x0000004c at cycle    60 , inst: 0x00000a13
+S	             20	          0	D
+L	             20	          0	D pc: 0x00000050 at cycle    60 
+S	             21	          0	D
+L	             21	          0	D pc: 0x00000054 at cycle    60 
+R	             17	             16	          0
+R	             16	             17	          0
+C	1
+S	             18	          0	W
+L	             18	          0	 W at cycle    61
+S	             19	          0	W
+L	             19	          0	 W at cycle    61
+S	             20	          0	E
+L	             20	          0	E (ALU) at pc: 0x00000050 at cycle    61 , inst: 0x00000a93
+I	             24	             24	  0
+S	             24	          0	F
+I	             25	             25	  0
+S	             25	          0	F
+L	             24	          0	F 0x00000060 at cycle    61  
+L	             25	          0	F 0x00000064 at cycle    61  
+S	             21	          0	E
+L	             21	          0	E (ALU) at pc: 0x00000054 at cycle    61 , inst: 0x00000b13
+S	             22	          0	D
+L	             22	          0	D pc: 0x00000058 at cycle    61 
+S	             23	          0	D
+L	             23	          0	D pc: 0x0000005c at cycle    61 
+C	1
+S	             20	          0	W
+L	             20	          0	 W at cycle    62
+S	             21	          0	W
+L	             21	          0	 W at cycle    62
+S	             22	          0	E
+L	             22	          0	E (ALU) at pc: 0x00000058 at cycle    62 , inst: 0x00000b93
+I	             26	             26	  0
+S	             26	          0	F
+I	             27	             27	  0
+S	             27	          0	F
+L	             26	          0	F 0x00000068 at cycle    62  
+L	             27	          0	F 0x0000006c at cycle    62  
+S	             23	          0	E
+L	             23	          0	E (ALU) at pc: 0x0000005c at cycle    62 , inst: 0x00000c13
+S	             24	          0	D
+L	             24	          0	D pc: 0x00000060 at cycle    62 
+S	             25	          0	D
+L	             25	          0	D pc: 0x00000064 at cycle    62 
+R	             19	             18	          0
+R	             18	             19	          0
+C	1
+S	             22	          0	W
+L	             22	          0	 W at cycle    63
+S	             23	          0	W
+L	             23	          0	 W at cycle    63
+S	             24	          0	E
+L	             24	          0	E (ALU) at pc: 0x00000060 at cycle    63 , inst: 0x00000c93
+I	             28	             28	  0
+S	             28	          0	F
+I	             29	             29	  0
+S	             29	          0	F
+L	             28	          0	F 0x00000070 at cycle    63  
+L	             29	          0	F 0x00000074 at cycle    63  
+S	             25	          0	E
+L	             25	          0	E (ALU) at pc: 0x00000064 at cycle    63 , inst: 0x00000d13
+S	             26	          0	D
+L	             26	          0	D pc: 0x00000068 at cycle    63 
+S	             27	          0	D
+L	             27	          0	D pc: 0x0000006c at cycle    63 
+R	             21	             20	          0
+R	             20	             21	          0
+C	1
+S	             24	          0	W
+L	             24	          0	 W at cycle    64
+S	             25	          0	W
+L	             25	          0	 W at cycle    64
+S	             26	          0	E
+L	             26	          0	E (ALU) at pc: 0x00000068 at cycle    64 , inst: 0x00000d93
+I	             30	             30	  0
+S	             30	          0	F
+I	             31	             31	  0
+S	             31	          0	F
+L	             30	          0	F 0x00000078 at cycle    64  
+L	             31	          0	F 0x0000007c at cycle    64  
+S	             27	          0	E
+L	             27	          0	E (ALU) at pc: 0x0000006c at cycle    64 , inst: 0x00000e13
+S	             28	          0	D
+L	             28	          0	D pc: 0x00000070 at cycle    64 
+S	             29	          0	D
+L	             29	          0	D pc: 0x00000074 at cycle    64 
+R	             23	             22	          0
+R	             22	             23	          0
+C	1
+S	             26	          0	W
+L	             26	          0	 W at cycle    65
+S	             27	          0	W
+L	             27	          0	 W at cycle    65
+S	             28	          0	E
+L	             28	          0	E (ALU) at pc: 0x00000070 at cycle    65 , inst: 0x00000e93
+I	             32	             32	  0
+S	             32	          0	F
+I	             33	             33	  0
+S	             33	          0	F
+L	             32	          0	F 0x00000080 at cycle    65  
+L	             33	          0	F 0x00000084 at cycle    65  
+S	             29	          0	E
+L	             29	          0	E (ALU) at pc: 0x00000074 at cycle    65 , inst: 0x00000f13
+S	             30	          0	D
+L	             30	          0	D pc: 0x00000078 at cycle    65 
+S	             31	          0	D
+L	             31	          0	D pc: 0x0000007c at cycle    65 
+R	             25	             24	          0
+R	             24	             25	          0
+C	1
+S	             28	          0	W
+L	             28	          0	 W at cycle    66
+S	             29	          0	W
+L	             29	          0	 W at cycle    66
+S	             30	          0	E
+L	             30	          0	E (ALU) at pc: 0x00000078 at cycle    66 , inst: 0x00000f93
+I	             34	             34	  0
+S	             34	          0	F
+I	             35	             35	  0
+S	             35	          0	F
+L	             34	          0	F 0x00000088 at cycle    66  
+L	             35	          0	F 0x0000008c at cycle    66  
+R	             27	             26	          0
+R	             26	             27	          0
+C	1
+S	             30	          0	W
+L	             30	          0	 W at cycle    67
+S	             31	          0	E
+L	             31	          0	E (ALU) at pc: 0x0000007c at cycle    67 , inst: 0x10000137
+R	             29	             28	          0
+R	             28	             29	          0
+C	1
+S	             31	          0	W
+L	             31	          0	 W at cycle    68
+R	             30	             30	          0
+C	1
+R	             31	             31	          0
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+S	             32	          0	D
+L	             32	          0	D pc: 0x00000080 at cycle    89 
+S	             33	          0	D
+L	             33	          0	D pc: 0x00000084 at cycle    89 
+C	1
+S	             32	          0	E
+L	             32	          0	E (ALU) at pc: 0x00000080 at cycle    90 , inst: 0xff010113
+I	             36	             36	  0
+S	             36	          0	F
+I	             37	             37	  0
+S	             37	          0	F
+L	             36	          0	F 0x00000090 at cycle    90  
+L	             37	          0	F 0x00000094 at cycle    90  
+C	1
+S	             32	          0	W
+L	             32	          0	 W at cycle    91
+S	             33	          0	E
+L	             33	          0	E (CTRL) at pc: 0x00000084 at cycle    91 
+S	             34	          0	D
+L	             34	          0	D pc: 0x00000088 at cycle    91 
+S	             35	          0	D
+L	             35	          0	D pc: 0x0000008c at cycle    91 
+C	1
+S	             33	          0	W
+L	             33	          0	 W at cycle    92
+S	             34	          0	E
+L	             34	          0	E (NOP) at pc: 0x00000088 at cycle    92 
+I	             38	             38	  0
+S	             38	          0	F
+I	             39	             39	  0
+S	             39	          0	F
+L	             38	          0	F 0x0000109c at cycle    92  
+L	             39	          0	F 0x000010a0 at cycle    92  
+S	             35	          0	E
+L	             35	          0	E (NOP) at pc: 0x0000008c at cycle    92 
+S	             36	          0	D
+L	             36	          0	D pc: 0x00000090 at cycle    92 
+S	             37	          0	D
+L	             37	          0	D pc: 0x00000094 at cycle    92 
+R	             32	             32	          0
+C	1
+S	             36	          0	E
+L	             36	          0	E (NOP) at pc: 0x00000090 at cycle    93 
+I	             40	             40	  0
+S	             40	          0	F
+I	             41	             41	  0
+S	             41	          0	F
+L	             40	          0	F 0x000010a4 at cycle    93  
+L	             41	          0	F 0x000010a8 at cycle    93  
+S	             37	          0	E
+L	             37	          0	E (NOP) at pc: 0x00000094 at cycle    93 
+R	             33	             33	          0
+R	             34	          0	          1
+R	             35	          0	          1
+C	1
+R	             36	          0	          1
+R	             37	          0	          1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+S	             38	          0	D
+L	             38	          0	D pc: 0x0000109c at cycle   116 
+S	             39	          0	D
+L	             39	          0	D pc: 0x000010a0 at cycle   116 
+C	1
+S	             38	          0	E
+L	             38	          0	E (ALU) at pc: 0x0000109c at cycle   117 , inst: 0x00b00513
+I	             42	             42	  0
+S	             42	          0	F
+I	             43	             43	  0
+S	             43	          0	F
+L	             42	          0	F 0x000010ac at cycle   117  
+L	             43	          0	F 0x000010b0 at cycle   117  
+C	1
+S	             38	          0	W
+L	             38	          0	 W at cycle   118
+S	             39	          0	E
+L	             39	          0	E (CTRL) at pc: 0x000010a0 at cycle   118 
+S	             40	          0	D
+L	             40	          0	D pc: 0x000010a4 at cycle   118 
+S	             41	          0	D
+L	             41	          0	D pc: 0x000010a8 at cycle   118 
+C	1
+S	             39	          0	W
+L	             39	          0	 W at cycle   119
+S	             40	          0	E
+L	             40	          0	E (NOP) at pc: 0x000010a4 at cycle   119 
+I	             44	             44	  0
+S	             44	          0	F
+I	             45	             45	  0
+S	             45	          0	F
+L	             44	          0	F 0x00000088 at cycle   119  
+L	             45	          0	F 0x0000008c at cycle   119  
+S	             41	          0	E
+L	             41	          0	E (NOP) at pc: 0x000010a8 at cycle   119 
+S	             42	          0	D
+L	             42	          0	D pc: 0x000010ac at cycle   119 
+S	             43	          0	D
+L	             43	          0	D pc: 0x000010b0 at cycle   119 
+R	             38	             34	          0
+C	1
+S	             42	          0	E
+L	             42	          0	E (NOP) at pc: 0x000010ac at cycle   120 
+I	             46	             46	  0
+S	             46	          0	F
+I	             47	             47	  0
+S	             47	          0	F
+L	             46	          0	F 0x00000090 at cycle   120  
+L	             47	          0	F 0x00000094 at cycle   120  
+S	             43	          0	E
+L	             43	          0	E (NOP) at pc: 0x000010b0 at cycle   120 
+S	             44	          0	D
+L	             44	          0	D pc: 0x00000088 at cycle   120 
+S	             45	          0	D
+L	             45	          0	D pc: 0x0000008c at cycle   120 
+R	             39	             35	          0
+R	             40	          0	          1
+R	             41	          0	          1
+C	1
+S	             44	          0	E
+L	             44	          0	E (ALU) at pc: 0x00000088 at cycle   121 , inst: 0x00000513
+I	             48	             48	  0
+S	             48	          0	F
+I	             49	             49	  0
+S	             49	          0	F
+L	             48	          0	F 0x00000098 at cycle   121  
+L	             49	          0	F 0x0000009c at cycle   121  
+S	             46	          0	D
+L	             46	          0	D pc: 0x00000090 at cycle   121 
+S	             47	          0	D
+L	             47	          0	D pc: 0x00000094 at cycle   121 
+R	             42	          0	          1
+R	             43	          0	          1
+C	1
+S	             44	          0	W
+L	             44	          0	 W at cycle   122
+S	             45	          0	E
+L	             45	          0	E (CTRL) at pc: 0x0000008c at cycle   122 
+I	             50	             50	  0
+S	             50	          0	F
+I	             51	             51	  0
+S	             51	          0	F
+L	             50	          0	F 0x00001064 at cycle   122  
+L	             51	          0	F 0x00001068 at cycle   122  
+S	             46	          0	E
+L	             46	          0	E (NOP) at pc: 0x00000090 at cycle   122 
+S	             48	          0	D
+L	             48	          0	D pc: 0x00000098 at cycle   122 
+C	1
+S	             45	          0	W
+L	             45	          0	 W at cycle   123
+S	             47	          0	E
+L	             47	          0	E (NOP) at pc: 0x00000094 at cycle   123 
+S	             48	          0	E
+L	             48	          0	E (NOP) at pc: 0x00000098 at cycle   123 
+S	             49	          0	D
+L	             49	          0	D pc: 0x0000009c at cycle   123 
+R	             44	             36	          0
+R	             46	          0	          1
+C	1
+S	             49	          0	E
+L	             49	          0	E (NOP) at pc: 0x0000009c at cycle   124 
+I	             52	             52	  0
+S	             52	          0	F
+I	             53	             53	  0
+S	             53	          0	F
+L	             52	          0	F 0x0000106c at cycle   124  
+L	             53	          0	F 0x00001070 at cycle   124  
+R	             45	             37	          0
+R	             47	          0	          1
+R	             48	          0	          1
+C	1
+R	             49	          0	          1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+C	1
+S	             50	          0	D
+L	             50	          0	D pc: 0x00001064 at cycle   146 
+S	             51	          0	D
+L	             51	          0	D pc: 0x00001068 at cycle   146 
+C	1
+S	             50	          0	E
+L	             50	          0	E (ALU) at pc: 0x00001064 at cycle   147 , inst: 0xfe010113
+S	             51	          0	D
+L	             51	          0	D pc: 0x00001068 at cycle   147 
+C	1
+S	             50	          0	W
+L	             50	          0	 W at cycle   148
+S	             51	          0	D
+L	             51	          0	D pc: 0x00001068 at cycle   148 
+C	1
+S	             51	          0	E
+L	             51	          0	E (MEM) at pc: 0x00001068 at cycle   149, addr: 0x0fffffec
+I	             54	             54	  0
+S	             54	          0	F
+I	             55	             55	  0
+S	             55	          0	F
+L	             54	          0	F 0x00001074 at cycle   149  
+L	             55	          0	F 0x00001078 at cycle   149  
+S	             52	          0	D
+L	             52	          0	D pc: 0x0000106c at cycle   149 
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   149 
+R	             50	             38	          0
+C	1
+S	             52	          0	E
+L	             52	          0	E (ALU) at pc: 0x0000106c at cycle   150 , inst: 0x02010413
+I	             56	             56	  0
+S	             56	          0	F
+L	             56	          0	F 0x0000107c at cycle   150  
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   150 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   151 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   152 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   153 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   154 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   155 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   156 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   157 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   158 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   159 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   160 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   161 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   162 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   163 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   164 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   165 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   166 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   167 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   168 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   169 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   170 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   171 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   172 
+C	1
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   173 
+C	1
+S	             51	          0	W
+L	             51	          0	 W at cycle   174
+S	             52	          0	W
+L	             52	          0	 W at cycle   174
+S	             53	          0	D
+L	             53	          0	D pc: 0x00001070 at cycle   174 
+S	             54	          0	D
+L	             54	          0	D pc: 0x00001074 at cycle   174 
+C	1
+S	             53	          0	E
+L	             53	          0	E (MEM) at pc: 0x00001070 at cycle   175, addr: 0x0fffffdc
+I	             57	             57	  0
+S	             57	          0	F
+I	             58	             58	  0
+S	             58	          0	F
+L	             57	          0	F 0x00001080 at cycle   175  
+L	             58	          0	F 0x00001084 at cycle   175  
+S	             55	          0	D
+L	             55	          0	D pc: 0x00001078 at cycle   175 
+R	             52	             39	          0
+R	             51	             40	          0
+C	1
+S	             54	          0	E
+L	             54	          0	E (ALU) at pc: 0x00001074 at cycle   176 , inst: 0x00001797
+S	             55	          0	D
+L	             55	          0	D pc: 0x00001078 at cycle   176 
+C	1
+S	             53	          0	W
+L	             53	          0	 W at cycle   177
+S	             54	          0	W
+L	             54	          0	 W at cycle   177
+S	             55	          0	D
+L	             55	          0	D pc: 0x00001078 at cycle   177 
+S	             56	          0	D
+L	             56	          0	D pc: 0x0000107c at cycle   177 
+C	1
+S	             55	          0	E
+L	             55	          0	E (ALU) at pc: 0x00001078 at cycle   178 , inst: 0xf9478793
+S	             56	          0	D
+L	             56	          0	D pc: 0x0000107c at cycle   178 
+R	             54	             41	          0
+R	             53	             42	          0
+C	1
+S	             55	          0	W
+L	             55	          0	 W at cycle   179
+S	             56	          0	D
+L	             56	          0	D pc: 0x0000107c at cycle   179 
+S	             57	          0	D
+L	             57	          0	D pc: 0x00001080 at cycle   179 
+C	1
+S	             56	          0	E
+L	             56	          0	E (MEM) at pc: 0x0000107c at cycle   180, addr: 0x00002008
+I	             59	             59	  0
+S	             59	          0	F
+I	             60	             60	  0
+S	             60	          0	F
+L	             59	          0	F 0x00001088 at cycle   180  
+L	             60	          0	F 0x0000108c at cycle   180  
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   180 
+R	             55	             43	          0
+C	1
+S	             57	          0	E
+L	             57	          0	E (MEM) at pc: 0x00001080 at cycle   181, addr: 0x0fffffdc
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   181 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   182 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   183 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   184 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   185 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   186 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   187 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   188 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   189 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   190 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   191 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   192 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   193 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   194 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   195 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   196 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   197 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   198 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   199 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   200 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   201 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   202 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   203 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   204 
+C	1
+S	             56	          0	W
+L	             56	          0	 W at cycle   205
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   205 
+C	1
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   206 
+R	             56	             44	          0
+C	1
+S	             57	          0	W
+L	             57	          0	 W at cycle   207
+S	             58	          0	D
+L	             58	          0	D pc: 0x00001084 at cycle   207 
+S	             59	          0	D
+L	             59	          0	D pc: 0x00001088 at cycle   207 
+C	1
+S	             58	          0	E
+L	             58	          0	E (MMIO) at pc: 0x00001084 at cycle   208 

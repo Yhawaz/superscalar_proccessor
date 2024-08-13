@@ -1,0 +1,205 @@
+=== Generated schedule for mkBRF ===
+
+Method schedule
+---------------
+Method: rv1
+Ready signal: True
+Conflict-free: rv1, rv2, rv3, rv4
+Sequenced after: set, set1
+ 
+Method: rv2
+Ready signal: True
+Conflict-free: rv1, rv2, rv3, rv4
+Sequenced after: set, set1
+ 
+Method: rv3
+Ready signal: True
+Conflict-free: rv1, rv2, rv3, rv4
+Sequenced after: set, set1
+ 
+Method: rv4
+Ready signal: True
+Conflict-free: rv1, rv2, rv3, rv4
+Sequenced after: set, set1
+ 
+Method: set
+Ready signal: True
+Sequenced before: rv1, rv2, rv3, rv4, set1
+Conflicts: set
+ 
+Method: set1
+Ready signal: True
+Sequenced before: rv1, rv2, rv3, rv4
+Sequenced after: set
+Conflicts: set1
+ 
+Rule schedule
+-------------
+Rule: rf_0_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_3_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_4_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_5_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_6_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_7_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_8_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_9_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_10_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_11_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_12_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_13_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_14_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_15_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_16_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_17_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_18_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_19_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_20_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_21_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_22_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_23_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_24_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_25_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_26_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_27_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_28_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_29_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_30_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rf_31_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: set,
+			 set1,
+			 rv1,
+			 rv2,
+			 rv3,
+			 rv4,
+			 rf_0_canonicalize,
+			 rf_1_canonicalize,
+			 rf_2_canonicalize,
+			 rf_3_canonicalize,
+			 rf_4_canonicalize,
+			 rf_5_canonicalize,
+			 rf_6_canonicalize,
+			 rf_7_canonicalize,
+			 rf_8_canonicalize,
+			 rf_9_canonicalize,
+			 rf_10_canonicalize,
+			 rf_11_canonicalize,
+			 rf_12_canonicalize,
+			 rf_13_canonicalize,
+			 rf_14_canonicalize,
+			 rf_15_canonicalize,
+			 rf_16_canonicalize,
+			 rf_17_canonicalize,
+			 rf_18_canonicalize,
+			 rf_19_canonicalize,
+			 rf_20_canonicalize,
+			 rf_21_canonicalize,
+			 rf_22_canonicalize,
+			 rf_23_canonicalize,
+			 rf_24_canonicalize,
+			 rf_25_canonicalize,
+			 rf_26_canonicalize,
+			 rf_27_canonicalize,
+			 rf_28_canonicalize,
+			 rf_29_canonicalize,
+			 rf_30_canonicalize,
+			 rf_31_canonicalize
+
+=====================================

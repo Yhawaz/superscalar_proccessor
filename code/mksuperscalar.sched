@@ -1,0 +1,1451 @@
+=== Generated schedule for mksuperscalar ===
+
+Method schedule
+---------------
+Method: getIReq
+Ready signal: toImem_rv.port1__read[69]
+Conflict-free: getIResp, getIResp2, getDReq, getMMIOReq
+Sequenced after (restricted): getDResp, getMMIOResp
+Conflicts: getIReq
+ 
+Method: getIResp
+Ready signal: fromImem_want_enq1_readBeforeLaterWrites_0.read &&
+	      fromImem_want_enq1_readBeforeLaterWrites_1.read &&
+	      (! fromImem_want_enq1_register[68]) &&
+	      (PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notFull
+						  fromImem_internalFIFOs_1.i_notFull)
+				  ((fromImem_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				    fromImem_enqueueFIFO_readBeforeLaterWrites_1.read)
+				   ? fromImem_enqueueFIFO_register
+				   : (_ :: Bit 1)))
+Conflict-free: getIReq, getIResp2, getDReq, getDResp, getMMIOReq, getMMIOResp
+Conflicts: getIResp
+ 
+Method: getIResp2
+Ready signal: fromImem_want_enq2_readBeforeLaterWrites_0.read &&
+	      fromImem_want_enq2_readBeforeLaterWrites_1.read &&
+	      (! fromImem_want_enq2_register[68]) &&
+	      (PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notFull
+						  fromImem_internalFIFOs_1.i_notFull)
+				  (((fromImem_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				     fromImem_enqueueFIFO_readBeforeLaterWrites_1.read)
+				    ? fromImem_enqueueFIFO_register
+				    : (_ :: Bit 1)) +
+				   1'd1))
+Conflict-free: getIReq, getIResp, getDReq, getDResp, getMMIOReq, getMMIOResp
+Conflicts: getIResp2
+ 
+Method: getDReq
+Ready signal: toDmem_rv.port1__read[68]
+Conflict-free: getIReq, getIResp, getIResp2, getMMIOReq
+Sequenced after (restricted): getDResp, getMMIOResp
+Conflicts: getDReq
+ 
+Method: getDResp
+Ready signal: ! fromDmem_rv.port0__read[68]
+Conflict-free: getIResp, getIResp2, getMMIOResp
+Sequenced before (restricted): getIReq, getDReq, getMMIOReq
+Conflicts: getDResp
+ 
+Method: getMMIOReq
+Ready signal: toMMIO_rv.port1__read[68]
+Conflict-free: getIReq, getIResp, getIResp2, getDReq
+Sequenced after (restricted): getDResp, getMMIOResp
+Conflicts: getMMIOReq
+ 
+Method: getMMIOResp
+Ready signal: ! fromMMIO_rv.port0__read[68]
+Conflict-free: getIResp, getIResp2, getDResp
+Sequenced before (restricted): getIReq, getDReq, getMMIOReq
+Conflicts: getMMIOResp
+ 
+Rule schedule
+-------------
+Rule: fromImem_enqueueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_dequeueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_want_enq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_want_enq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_want_deq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_want_deq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fromImem_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: commit_id_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: globalEpoch_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: redirectPc_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: mispredicted_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_enqueueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_dequeueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_want_enq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_want_enq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_want_deq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_want_deq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: f2d_canonicalize
+Predicate: ((! f2d_want_enq1_readBeforeLaterWrites_1.read) ||
+	    (f2d_want_enq1_port_0.whas
+	     ? ! f2d_want_enq1_port_0.wget[113]
+	     : (! f2d_want_enq1_register[113])) ||
+	    case (f2d_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		  f2d_enqueueFIFO_readBeforeLaterWrites_1.read)
+		 ? f2d_enqueueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> f2d_internalFIFOs_0.i_notFull
+	    1'd1 -> f2d_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((f2d_want_deq1_readBeforeLaterWrites_1.read
+	     ? f2d_want_deq1_port_0.whas
+	       ? ! f2d_want_deq1_port_0.wget
+	       : (! f2d_want_deq1_register)
+	     : (_ :: Bit 1)) ||
+	    case (f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? f2d_dequeueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> f2d_internalFIFOs_0.i_notEmpty
+	    1'd1 -> f2d_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1) &&
+	   ((! f2d_want_enq2_readBeforeLaterWrites_1.read) ||
+	    (f2d_want_enq2_port_0.whas
+	     ? ! f2d_want_enq2_port_0.wget[113]
+	     : (! f2d_want_enq2_register[113])) ||
+	    case ((f2d_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		   f2d_enqueueFIFO_readBeforeLaterWrites_1.read)
+		  ? f2d_enqueueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> f2d_internalFIFOs_0.i_notFull
+	    1'd1 -> f2d_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((f2d_want_deq2_readBeforeLaterWrites_1.read
+	     ? f2d_want_deq2_port_0.whas
+	       ? ! f2d_want_deq2_port_0.wget
+	       : (! f2d_want_deq2_register)
+	     : (_ :: Bit 1)) ||
+	    case ((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		   f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+		  ? f2d_dequeueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> f2d_internalFIFOs_0.i_notEmpty
+	    1'd1 -> f2d_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1)
+Blocking rules: (none)
+ 
+Rule: d2e_enqueueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_dequeueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_want_enq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_want_enq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_want_deq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_want_deq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: d2e_canonicalize
+Predicate: ((! d2e_want_enq1_readBeforeLaterWrites_1.read) ||
+	    (d2e_want_enq1_port_0.whas
+	     ? ! d2e_want_enq1_port_0.wget[217]
+	     : (! d2e_want_enq1_register[217])) ||
+	    case (d2e_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		  d2e_enqueueFIFO_readBeforeLaterWrites_1.read)
+		 ? d2e_enqueueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> d2e_internalFIFOs_0.i_notFull
+	    1'd1 -> d2e_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((d2e_want_deq1_readBeforeLaterWrites_1.read
+	     ? d2e_want_deq1_port_0.whas
+	       ? ! d2e_want_deq1_port_0.wget
+	       : (! d2e_want_deq1_register)
+	     : (_ :: Bit 1)) ||
+	    case (d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? d2e_dequeueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	    1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1) &&
+	   ((! d2e_want_enq2_readBeforeLaterWrites_1.read) ||
+	    (d2e_want_enq2_port_0.whas
+	     ? ! d2e_want_enq2_port_0.wget[217]
+	     : (! d2e_want_enq2_register[217])) ||
+	    case ((d2e_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		   d2e_enqueueFIFO_readBeforeLaterWrites_1.read)
+		  ? d2e_enqueueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> d2e_internalFIFOs_0.i_notFull
+	    1'd1 -> d2e_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((d2e_want_deq2_readBeforeLaterWrites_1.read
+	     ? d2e_want_deq2_port_0.whas
+	       ? ! d2e_want_deq2_port_0.wget
+	       : (! d2e_want_deq2_register)
+	     : (_ :: Bit 1)) ||
+	    case ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		  ? d2e_dequeueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	    1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1)
+Blocking rules: (none)
+ 
+Rule: e2w_enqueueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_dequeueFIFO_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_want_enq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_want_enq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_want_deq1_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_want_deq2_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: e2w_canonicalize
+Predicate: ((! e2w_want_enq1_readBeforeLaterWrites_1.read) ||
+	    (e2w_want_enq1_port_0.whas
+	     ? ! e2w_want_enq1_port_0.wget[190]
+	     : (! e2w_want_enq1_register[190])) ||
+	    case (e2w_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		  e2w_enqueueFIFO_readBeforeLaterWrites_1.read)
+		 ? e2w_enqueueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> e2w_internalFIFOs_0.i_notFull
+	    1'd1 -> e2w_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((e2w_want_deq1_readBeforeLaterWrites_1.read
+	     ? e2w_want_deq1_port_0.whas
+	       ? ! e2w_want_deq1_port_0.wget
+	       : (! e2w_want_deq1_register)
+	     : (_ :: Bit 1)) ||
+	    case (e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? e2w_dequeueFIFO_register
+		 : (_ :: Bit 1) of
+	    1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+	    1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1) &&
+	   ((! e2w_want_enq2_readBeforeLaterWrites_1.read) ||
+	    (e2w_want_enq2_port_0.whas
+	     ? ! e2w_want_enq2_port_0.wget[190]
+	     : (! e2w_want_enq2_register[190])) ||
+	    case ((e2w_enqueueFIFO_readBeforeLaterWrites_0.read &&
+		   e2w_enqueueFIFO_readBeforeLaterWrites_1.read)
+		  ? e2w_enqueueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> e2w_internalFIFOs_0.i_notFull
+	    1'd1 -> e2w_internalFIFOs_1.i_notFull
+	    _ -> 1'd1) &&
+	   ((e2w_want_deq2_readBeforeLaterWrites_1.read
+	     ? e2w_want_deq2_port_0.whas
+	       ? ! e2w_want_deq2_port_0.wget
+	       : (! e2w_want_deq2_register)
+	     : (_ :: Bit 1)) ||
+	    case ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		   e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		  ? e2w_dequeueFIFO_register
+		  : (_ :: Bit 1)) +
+		 1'd1 of
+	    1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+	    1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+	    _ -> 1'd1)
+Blocking rules: (none)
+ 
+Rule: decode_1_done_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: execute_1_done_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: execute_1_squashed_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: writeback_1_done_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: exec_1_alu_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: is_mem_inst_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: double_retired_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: double_squashed_canonicalize
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: tick
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: do_tic_logging
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fetch
+Predicate: f2d_want_enq1_readBeforeLaterWrites_0.read &&
+	   f2d_want_enq1_readBeforeLaterWrites_1.read &&
+	   (! f2d_want_enq1_register[113]) &&
+	   (PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.notFull
+					       f2d_internalFIFOs_1.notFull)
+			       ((f2d_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				 f2d_enqueueFIFO_readBeforeLaterWrites_1.read)
+				? f2d_enqueueFIFO_register
+				: (_ :: Bit 1))) &&
+	   (! toImem_rv.port0__read[69]) &&
+	   ((((mispredicted_readBeforeLaterWrites_2.read
+	       ? mispredicted_port_1.whas
+		 ? mispredicted_port_1.wget
+		 : (mispredicted_port_0.whas
+		    ? mispredicted_port_0.wget
+		    : mispredicted_register)
+	       : (_ :: Bit 1))
+	      ? redirectPc_readBeforeLaterWrites_2.read
+		? redirectPc_port_1.whas
+		  ? redirectPc_port_1.wget
+		  : (redirectPc_port_0.whas
+		     ? redirectPc_port_0.wget
+		     : redirectPc_register)
+		: (_ :: Bit 32)
+	      : pc)[5:2] ==
+	     4'hF) ||
+	    (f2d_want_enq2_readBeforeLaterWrites_0.read &&
+	     f2d_want_enq2_readBeforeLaterWrites_1.read &&
+	     (! f2d_want_enq2_register[113]) &&
+	     (PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.notFull
+						 f2d_internalFIFOs_1.notFull)
+				 (((f2d_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				    f2d_enqueueFIFO_readBeforeLaterWrites_1.read)
+				   ? f2d_enqueueFIFO_register
+				   : (_ :: Bit 1)) +
+				  1'd1)))) &&
+	   (! starting)
+Blocking rules: (none)
+ 
+Rule: decode_2
+Predicate: ((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+						fromImem_internalFIFOs_1.i_notEmpty)
+				(((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				   fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+				  ? fromImem_dequeueFIFO_register
+				  : (_ :: Bit 1)) +
+				 1'd1)) ||
+	    (! fromImem_want_enq2_readBeforeLaterWrites_1.read) ||
+	    (fromImem_want_enq2_port_0.whas
+	     ? fromImem_want_enq2_port_0.wget[68]
+	     : fromImem_want_enq2_register[68])) &&
+	   ((! ((PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.first[112:81]
+						    f2d_internalFIFOs_1.first[112:81])
+				    (((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				       f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+				      ? f2d_dequeueFIFO_register
+				      : (_ :: Bit 1)) +
+				     1'd1)) ==
+		((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+						     fromImem_internalFIFOs_1.i_notEmpty)
+				     (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+				       ? fromImem_dequeueFIFO_register
+				       : (_ :: Bit 1)) +
+				      1'd1))
+		 ? PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.first[63:32]
+						      fromImem_internalFIFOs_1.first[63:32])
+				      (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					 fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					? fromImem_dequeueFIFO_register
+					: (_ :: Bit 1)) +
+				       1'd1)
+		 : ((fromImem_want_enq2_readBeforeLaterWrites_1.read &&
+		     (fromImem_want_enq2_port_0.whas
+		      ? fromImem_want_enq2_port_0.wget[68]
+		      : fromImem_want_enq2_register[68]))
+		    ? fromImem_want_enq2_port_0.whas
+		      ? fromImem_want_enq2_port_0.wget[63:32]
+		      : fromImem_want_enq2_register[63:32]
+		    : (_ :: Bit 32))))) ||
+	    sb.search3(((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+							    fromImem_internalFIFOs_1.i_notEmpty)
+					    (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? fromImem_dequeueFIFO_register
+					      : (_ :: Bit 1)) +
+					     1'd1))
+			? PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.first[31:0]
+							     fromImem_internalFIFOs_1.first[31:0])
+					     (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					       ? fromImem_dequeueFIFO_register
+					       : (_ :: Bit 1)) +
+					      1'd1)
+			: ((fromImem_want_enq2_readBeforeLaterWrites_1.read &&
+			    (fromImem_want_enq2_port_0.whas
+			     ? fromImem_want_enq2_port_0.wget[68]
+			     : fromImem_want_enq2_register[68]))
+			   ? fromImem_want_enq2_port_0.whas
+			     ? fromImem_want_enq2_port_0.wget[31:0]
+			     : fromImem_want_enq2_register[31:0]
+			   : (_ :: Bit 32)))[19:15]) ||
+	    sb.search4(((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+							    fromImem_internalFIFOs_1.i_notEmpty)
+					    (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? fromImem_dequeueFIFO_register
+					      : (_ :: Bit 1)) +
+					     1'd1))
+			? PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.first[31:0]
+							     fromImem_internalFIFOs_1.first[31:0])
+					     (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					       ? fromImem_dequeueFIFO_register
+					       : (_ :: Bit 1)) +
+					      1'd1)
+			: ((fromImem_want_enq2_readBeforeLaterWrites_1.read &&
+			    (fromImem_want_enq2_port_0.whas
+			     ? fromImem_want_enq2_port_0.wget[68]
+			     : fromImem_want_enq2_register[68]))
+			   ? fromImem_want_enq2_port_0.whas
+			     ? fromImem_want_enq2_port_0.wget[31:0]
+			     : fromImem_want_enq2_register[31:0]
+			   : (_ :: Bit 32)))[24:20]) ||
+	    (((f2d_want_deq2_readBeforeLaterWrites_0.read &&
+	       f2d_want_deq2_readBeforeLaterWrites_1.read)
+	      ? ! f2d_want_deq2_register
+	      : (_ :: Bit 1)) &&
+	     ((! fromImem_want_enq2_readBeforeLaterWrites_1.read) ||
+	      (fromImem_want_enq2_port_0.whas
+	       ? fromImem_want_enq2_port_0.wget[68]
+	       : fromImem_want_enq2_register[68]) ||
+	      (PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+						  fromImem_internalFIFOs_1.i_notEmpty)
+				  (((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? fromImem_dequeueFIFO_register
+				    : (_ :: Bit 1)) +
+				   1'd1))) &&
+	     ((fromImem_want_deq2_readBeforeLaterWrites_0.read &&
+	       fromImem_want_deq2_readBeforeLaterWrites_1.read)
+	      ? ! fromImem_want_deq2_register
+	      : (_ :: Bit 1)) &&
+	     d2e_want_enq2_readBeforeLaterWrites_0.read &&
+	     d2e_want_enq2_readBeforeLaterWrites_1.read &&
+	     (! d2e_want_enq2_register[217]))) &&
+	   case ((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? f2d_dequeueFIFO_register
+		 : (_ :: Bit 1)) +
+		1'd1 of
+	   1'd0 -> f2d_internalFIFOs_0.i_notEmpty
+	   1'd1 -> f2d_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   (! starting) &&
+	   (decode_1_done_readBeforeLaterWrites_1.read
+	    ? decode_1_done_port_0.whas
+	      ? decode_1_done_port_0.wget
+	      : decode_1_done_register
+	    : (_ :: Bit 1)) &&
+	   (PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.notEmpty
+					       f2d_internalFIFOs_1.notEmpty)
+			       ((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				 f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+				? f2d_dequeueFIFO_register
+				: (_ :: Bit 1))) &&
+	   (PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.notEmpty
+					       f2d_internalFIFOs_1.notEmpty)
+			       (((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				  f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+				 ? f2d_dequeueFIFO_register
+				 : (_ :: Bit 1)) +
+				1'd1)) &&
+	   (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notFull
+					       d2e_internalFIFOs_1.notFull)
+			       ((d2e_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				 d2e_enqueueFIFO_readBeforeLaterWrites_1.read)
+				? d2e_enqueueFIFO_register
+				: (_ :: Bit 1))) &&
+	   (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notFull
+					       d2e_internalFIFOs_1.notFull)
+			       (((d2e_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				  d2e_enqueueFIFO_readBeforeLaterWrites_1.read)
+				 ? d2e_enqueueFIFO_register
+				 : (_ :: Bit 1)) +
+				1'd1))
+Blocking rules: (none)
+ 
+Rule: decode_1
+Predicate: ((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+						fromImem_internalFIFOs_1.i_notEmpty)
+				((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				  fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+				 ? fromImem_dequeueFIFO_register
+				 : (_ :: Bit 1))) ||
+	    (! fromImem_want_enq1_readBeforeLaterWrites_1.read) ||
+	    (fromImem_want_enq1_port_0.whas
+	     ? fromImem_want_enq1_port_0.wget[68]
+	     : fromImem_want_enq1_register[68])) &&
+	   case (f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		 f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+		? f2d_dequeueFIFO_register
+		: (_ :: Bit 1) of
+	   1'd0 -> f2d_internalFIFOs_0.i_notEmpty
+	   1'd1 -> f2d_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   (sb.search1(((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+							    fromImem_internalFIFOs_1.i_notEmpty)
+					    ((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					      fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					     ? fromImem_dequeueFIFO_register
+					     : (_ :: Bit 1)))
+			? PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.first[31:0]
+							     fromImem_internalFIFOs_1.first[31:0])
+					     ((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? fromImem_dequeueFIFO_register
+					      : (_ :: Bit 1))
+			: ((fromImem_want_enq1_readBeforeLaterWrites_1.read &&
+			    (fromImem_want_enq1_port_0.whas
+			     ? fromImem_want_enq1_port_0.wget[68]
+			     : fromImem_want_enq1_register[68]))
+			   ? fromImem_want_enq1_port_0.whas
+			     ? fromImem_want_enq1_port_0.wget[31:0]
+			     : fromImem_want_enq1_register[31:0]
+			   : (_ :: Bit 32)))[19:15]) ||
+	    sb.search2(((PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+							    fromImem_internalFIFOs_1.i_notEmpty)
+					    ((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					      fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					     ? fromImem_dequeueFIFO_register
+					     : (_ :: Bit 1)))
+			? PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.first[31:0]
+							     fromImem_internalFIFOs_1.first[31:0])
+					     ((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? fromImem_dequeueFIFO_register
+					      : (_ :: Bit 1))
+			: ((fromImem_want_enq1_readBeforeLaterWrites_1.read &&
+			    (fromImem_want_enq1_port_0.whas
+			     ? fromImem_want_enq1_port_0.wget[68]
+			     : fromImem_want_enq1_register[68]))
+			   ? fromImem_want_enq1_port_0.whas
+			     ? fromImem_want_enq1_port_0.wget[31:0]
+			     : fromImem_want_enq1_register[31:0]
+			   : (_ :: Bit 32)))[24:20]) ||
+	    ((PrimArrayDynSelect (PrimBuildArray f2d_internalFIFOs_0.notEmpty
+						 f2d_internalFIFOs_1.notEmpty)
+				 ((f2d_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				   f2d_dequeueFIFO_readBeforeLaterWrites_1.read)
+				  ? f2d_dequeueFIFO_register
+				  : (_ :: Bit 1))) &&
+	     ((f2d_want_deq1_readBeforeLaterWrites_0.read &&
+	       f2d_want_deq1_readBeforeLaterWrites_1.read)
+	      ? ! f2d_want_deq1_register
+	      : (_ :: Bit 1)) &&
+	     ((! fromImem_want_enq1_readBeforeLaterWrites_1.read) ||
+	      (fromImem_want_enq1_port_0.whas
+	       ? fromImem_want_enq1_port_0.wget[68]
+	       : fromImem_want_enq1_register[68]) ||
+	      (PrimArrayDynSelect (PrimBuildArray fromImem_internalFIFOs_0.i_notEmpty
+						  fromImem_internalFIFOs_1.i_notEmpty)
+				  ((fromImem_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				    fromImem_dequeueFIFO_readBeforeLaterWrites_1.read)
+				   ? fromImem_dequeueFIFO_register
+				   : (_ :: Bit 1)))) &&
+	     ((fromImem_want_deq1_readBeforeLaterWrites_0.read &&
+	       fromImem_want_deq1_readBeforeLaterWrites_1.read)
+	      ? ! fromImem_want_deq1_register
+	      : (_ :: Bit 1)) &&
+	     d2e_want_enq1_readBeforeLaterWrites_0.read &&
+	     d2e_want_enq1_readBeforeLaterWrites_1.read &&
+	     (! d2e_want_enq1_register[217]) &&
+	     (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notFull
+						 d2e_internalFIFOs_1.notFull)
+				 ((d2e_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				   d2e_enqueueFIFO_readBeforeLaterWrites_1.read)
+				  ? d2e_enqueueFIFO_register
+				  : (_ :: Bit 1))))) &&
+	   (! starting)
+Blocking rules: (none)
+ 
+Rule: execute2
+Predicate: ((case ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		   ? d2e_dequeueFIFO_register
+		   : (_ :: Bit 1)) +
+		  1'd1 of
+	     1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	     1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	     _ -> 1'd1 &&
+	     ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[112]
+						  d2e_internalFIFOs_1.first[112])
+				  (((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? d2e_dequeueFIFO_register
+				    : (_ :: Bit 1)) +
+				   1'd1)) ==
+	      ((globalEpoch_readBeforeLaterWrites_1.read &&
+		globalEpoch_readBeforeLaterWrites_2.read)
+	       ? globalEpoch_port_0.whas
+		 ? globalEpoch_port_0.wget
+		 : globalEpoch_register
+	       : (_ :: Bit 1))))
+	    ? ((! ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+						       d2e_internalFIFOs_1.first[208:177])
+				       (((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					  d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					 ? d2e_dequeueFIFO_register
+					 : (_ :: Bit 1)) +
+					1'd1))[6:0] ==
+		   7'b110011)) &&
+	       (! ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+						       d2e_internalFIFOs_1.first[208:177])
+				       (((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					  d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					 ? d2e_dequeueFIFO_register
+					 : (_ :: Bit 1)) +
+					1'd1))[6:0] ==
+		   7'b10011))) ||
+	      (exec_1_alu_readBeforeLaterWrites_1.read
+	       ? exec_1_alu_port_0.whas
+		 ? ! exec_1_alu_port_0.wget
+		 : (! exec_1_alu_register)
+	       : (_ :: Bit 1)) ||
+	      ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notEmpty
+						   d2e_internalFIFOs_1.notEmpty)
+				   (((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				      d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				     ? d2e_dequeueFIFO_register
+				     : (_ :: Bit 1)) +
+				    1'd1)) &&
+	       ((d2e_want_deq2_readBeforeLaterWrites_0.read &&
+		 d2e_want_deq2_readBeforeLaterWrites_1.read)
+		? ! d2e_want_deq2_register
+		: (_ :: Bit 1)) &&
+	       e2w_want_enq2_readBeforeLaterWrites_0.read &&
+	       e2w_want_enq2_readBeforeLaterWrites_1.read &&
+	       (! e2w_want_enq2_register[190]) &&
+	       (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.notFull
+						   e2w_internalFIFOs_1.notFull)
+				   (((e2w_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				      e2w_enqueueFIFO_readBeforeLaterWrites_1.read)
+				     ? e2w_enqueueFIFO_register
+				     : (_ :: Bit 1)) +
+				    1'd1)))
+	    : ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notEmpty
+						   d2e_internalFIFOs_1.notEmpty)
+				   (((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				      d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				     ? d2e_dequeueFIFO_register
+				     : (_ :: Bit 1)) +
+				    1'd1)) &&
+	       ((d2e_want_deq2_readBeforeLaterWrites_0.read &&
+		 d2e_want_deq2_readBeforeLaterWrites_1.read)
+		? ! d2e_want_deq2_register
+		: (_ :: Bit 1)) &&
+	       squashed2.i_notFull)) &&
+	   case ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? d2e_dequeueFIFO_register
+		 : (_ :: Bit 1)) +
+		1'd1 of
+	   1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	   1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   (! starting) &&
+	   (execute_1_done_readBeforeLaterWrites_1.read
+	    ? execute_1_done_port_0.whas
+	      ? execute_1_done_port_0.wget
+	      : execute_1_done_register
+	    : (_ :: Bit 1))
+Blocking rules: (none)
+ 
+Rule: execute1
+Predicate: (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.notEmpty
+					       d2e_internalFIFOs_1.notEmpty)
+			       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				? d2e_dequeueFIFO_register
+				: (_ :: Bit 1))) &&
+	   ((d2e_want_deq1_readBeforeLaterWrites_0.read &&
+	     d2e_want_deq1_readBeforeLaterWrites_1.read)
+	    ? ! d2e_want_deq1_register
+	    : (_ :: Bit 1)) &&
+	   ((case (d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		  ? d2e_dequeueFIFO_register
+		  : (_ :: Bit 1) of
+	     1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	     1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	     _ -> 1'd1 &&
+	     ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[112]
+						  d2e_internalFIFOs_1.first[112])
+				  ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				   ? d2e_dequeueFIFO_register
+				   : (_ :: Bit 1))) ==
+	      ((globalEpoch_readBeforeLaterWrites_0.read &&
+		globalEpoch_readBeforeLaterWrites_1.read &&
+		globalEpoch_readBeforeLaterWrites_2.read)
+	       ? globalEpoch_register
+	       : (_ :: Bit 1))))
+	    ? e2w_want_enq1_readBeforeLaterWrites_0.read &&
+	      e2w_want_enq1_readBeforeLaterWrites_1.read &&
+	      (! e2w_want_enq1_register[190]) &&
+	      (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.notFull
+						  e2w_internalFIFOs_1.notFull)
+				  ((e2w_enqueueFIFO_readBeforeLaterWrites_0.read &&
+				    e2w_enqueueFIFO_readBeforeLaterWrites_1.read)
+				   ? e2w_enqueueFIFO_register
+				   : (_ :: Bit 1))) &&
+	      ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+						   d2e_internalFIFOs_1.first[208:177])
+				   ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? d2e_dequeueFIFO_register
+				    : (_ :: Bit 1)))[6] ||
+	       (! ((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+						       d2e_internalFIFOs_1.first[208:177])
+				       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					? d2e_dequeueFIFO_register
+					: (_ :: Bit 1)))[4:3] ==
+		   2'b0)) ||
+	       (((((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[111:80]
+						       d2e_internalFIFOs_1.first[111:80])
+				       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					? d2e_dequeueFIFO_register
+					: (_ :: Bit 1))) +
+		   (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							 d2e_internalFIFOs_1.first[212])
+					 ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					  ? d2e_dequeueFIFO_register
+					  : (_ :: Bit 1))) &&
+		     ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0.first[212]
+							   ? d2e_internalFIFOs_0.first[211:209]
+							   : (_ :: Bit 3))
+							  (d2e_internalFIFOs_1.first[212]
+							   ? d2e_internalFIFOs_1.first[211:209]
+							   : (_ :: Bit 3)))
+					  ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					   ? d2e_dequeueFIFO_register
+					   : (_ :: Bit 1))) ==
+		      3'd0))
+		    ? sext (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+							       d2e_internalFIFOs_1.first[208:177])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1)))[31:20]
+		    : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							    d2e_internalFIFOs_1.first[212])
+					    ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					      d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					     ? d2e_dequeueFIFO_register
+					     : (_ :: Bit 1))) &&
+			((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0.first[212]
+							      ? d2e_internalFIFOs_0.first[211:209]
+							      : (_ :: Bit 3))
+							     (d2e_internalFIFOs_1.first[212]
+							      ? d2e_internalFIFOs_1.first[211:209]
+							      : (_ :: Bit 3)))
+					     ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? d2e_dequeueFIFO_register
+					      : (_ :: Bit 1))) ==
+			 3'd1))
+		       ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+								   d2e_internalFIFOs_1.first[208:177])
+						   ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						     d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						    ? d2e_dequeueFIFO_register
+						    : (_ :: Bit 1)))[31:25], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+														 d2e_internalFIFOs_1.first[208:177])
+												 ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+												   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+												  ? d2e_dequeueFIFO_register
+												  : (_ :: Bit 1)))[11:7]}
+		       : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							       d2e_internalFIFOs_1.first[212])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1))) &&
+			   ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first____d1116(...)[212]
+								 ? d2e_internalFIFOs_0_first____d1116(...)[211:209]
+								 : (_ :: Bit 3))
+								(d2e_internalFIFOs_1_first____d1118(...)[212]
+								 ? d2e_internalFIFOs_1_first____d1118(...)[211:209]
+								 : (_ :: Bit 3)))
+						((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						  d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						 ? d2e_dequeueFIFO_register
+						 : (_ :: Bit 1))) ==
+			    3'd2))
+			  ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+								      d2e_internalFIFOs_1_first____d1118(...)[208:177])
+						      ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+							d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						       ? d2e_dequeueFIFO_register
+						       : (_ :: Bit 1)))[31], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+														 d2e_internalFIFOs_1_first____d1118(...)[208:177])
+												 ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+												   d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+												  ? d2e_dequeueFIFO_register
+												  : (_ :: Bit 1)))[7], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+																			   d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+																	   (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+																	    ? def__h29163(...)
+																	    : (_ :: Bit 1)))[30:25], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+																									 d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+																							 (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+																							  ? def__h29163(...)
+																							  : (_ :: Bit 1)))[11:8], 1'b0}
+			  : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+								  d2e_internalFIFOs_1.first[212])
+						  ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						   ? d2e_dequeueFIFO_register
+						   : (_ :: Bit 1))) &&
+			      ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first__116_BIT_212___d1195(...)
+								    ? d2e_internalFIFOs_0_first__116_BITS_211_TO_209___d1199(...)
+								    : (_ :: Bit 3))
+								   (d2e_internalFIFOs_1_first__118_BIT_212___d1196(...)
+								    ? d2e_internalFIFOs_1_first__118_BITS_211_TO_209___d1201(...)
+								    : (_ :: Bit 3)))
+						   ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						     d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						    ? d2e_dequeueFIFO_register
+						    : (_ :: Bit 1))) ==
+			       3'd3))
+			     ? {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+								    d2e_internalFIFOs_1_first____d1118(...)[208:177])
+						    ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						      d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						     ? d2e_dequeueFIFO_register
+						     : (_ :: Bit 1)))[31:12], 12'b0}
+			     : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[212]
+								     d2e_internalFIFOs_1_first____d1118(...)[212])
+						     ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						       d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						      ? d2e_dequeueFIFO_register
+						      : (_ :: Bit 1))) &&
+				 ((PrimArrayDynSelect (PrimBuildArray IF_d2e_internalFIFOs_0_first__116_BIT_212_195__ETC___d1200(...)
+								      IF_d2e_internalFIFOs_1_first__118_BIT_212_196__ETC___d1202(...))
+						      (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						       ? def__h29163(...)
+						       : (_ :: Bit 1))) ==
+				  3'd4))
+				? sext {(PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+							    x__h26585(...))[31], (PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+												     x__h26585(...))[19:12], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[20], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[30:21], 1'b0}
+				: 32'd0))))))[31:2] ==
+		  30'd1006649340) ||
+		 (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[111:80]
+						       d2e_internalFIFOs_1.first[111:80])
+				       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					? d2e_dequeueFIFO_register
+					: (_ :: Bit 1))) +
+		   (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							 d2e_internalFIFOs_1.first[212])
+					 ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					  ? d2e_dequeueFIFO_register
+					  : (_ :: Bit 1))) &&
+		     ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0.first[212]
+							   ? d2e_internalFIFOs_0.first[211:209]
+							   : (_ :: Bit 3))
+							  (d2e_internalFIFOs_1.first[212]
+							   ? d2e_internalFIFOs_1.first[211:209]
+							   : (_ :: Bit 3)))
+					  ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					   ? d2e_dequeueFIFO_register
+					   : (_ :: Bit 1))) ==
+		      3'd0))
+		    ? sext (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+							       d2e_internalFIFOs_1.first[208:177])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1)))[31:20]
+		    : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							    d2e_internalFIFOs_1.first[212])
+					    ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					      d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					     ? d2e_dequeueFIFO_register
+					     : (_ :: Bit 1))) &&
+			((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first____d1116(...)[212]
+							      ? d2e_internalFIFOs_0_first____d1116(...)[211:209]
+							      : (_ :: Bit 3))
+							     (d2e_internalFIFOs_1_first____d1118(...)[212]
+							      ? d2e_internalFIFOs_1_first____d1118(...)[211:209]
+							      : (_ :: Bit 3)))
+					     ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? d2e_dequeueFIFO_register
+					      : (_ :: Bit 1))) ==
+			 3'd1))
+		       ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+								   d2e_internalFIFOs_1_first____d1118(...)[208:177])
+						   ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						     d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						    ? d2e_dequeueFIFO_register
+						    : (_ :: Bit 1)))[31:25], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+														 d2e_internalFIFOs_1_first____d1118(...)[208:177])
+												 ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+												   d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+												  ? d2e_dequeueFIFO_register
+												  : (_ :: Bit 1)))[11:7]}
+		       : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							       d2e_internalFIFOs_1.first[212])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1))) &&
+			   ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first__116_BIT_212___d1195(...)
+								 ? d2e_internalFIFOs_0_first__116_BITS_211_TO_209___d1199(...)
+								 : (_ :: Bit 3))
+								(d2e_internalFIFOs_1_first__118_BIT_212___d1196(...)
+								 ? d2e_internalFIFOs_1_first__118_BITS_211_TO_209___d1201(...)
+								 : (_ :: Bit 3)))
+						((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						  d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						 ? d2e_dequeueFIFO_register
+						 : (_ :: Bit 1))) ==
+			    3'd2))
+			  ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+								      d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+						      (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						       ? def__h29163(...)
+						       : (_ :: Bit 1)))[31], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+														 d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+												 (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+												  ? def__h29163(...)
+												  : (_ :: Bit 1)))[7], (PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+																	   x__h26585(...))[30:25], (PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+																						       x__h26585(...))[11:8], 1'b0}
+			  : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[212]
+								  d2e_internalFIFOs_1_first____d1118(...)[212])
+						  ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						    d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						   ? d2e_dequeueFIFO_register
+						   : (_ :: Bit 1))) &&
+			      ((PrimArrayDynSelect (PrimBuildArray IF_d2e_internalFIFOs_0_first__116_BIT_212_195__ETC___d1200(...)
+								   IF_d2e_internalFIFOs_1_first__118_BIT_212_196__ETC___d1202(...))
+						   (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						    ? def__h29163(...)
+						    : (_ :: Bit 1))) ==
+			       3'd3))
+			     ? {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+								    d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+						    (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						     ? def__h29163(...)
+						     : (_ :: Bit 1)))[31:12], 12'b0}
+			     : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BIT_212___d1195(...)
+								     d2e_internalFIFOs_1_first__118_BIT_212___d1196(...))
+						     (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						      ? def__h29163(...)
+						      : (_ :: Bit 1))) &&
+				 ((PrimArrayDynSelect ARR_IF_d2e_internalFIFOs_0_first__116_BIT_212__ETC___d1203(...)
+						      x__h26585(...)) ==
+				  3'd4))
+				? sext {SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[31], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[19:12], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1414(...), SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1415(...), 1'b0}
+				: 32'd0))))))[31:2] ==
+		  30'd1006649341) ||
+		 (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[111:80]
+						       d2e_internalFIFOs_1.first[111:80])
+				       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					? d2e_dequeueFIFO_register
+					: (_ :: Bit 1))) +
+		   (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							 d2e_internalFIFOs_1.first[212])
+					 ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					   d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					  ? d2e_dequeueFIFO_register
+					  : (_ :: Bit 1))) &&
+		     ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0.first[212]
+							   ? d2e_internalFIFOs_0.first[211:209]
+							   : (_ :: Bit 3))
+							  (d2e_internalFIFOs_1.first[212]
+							   ? d2e_internalFIFOs_1.first[211:209]
+							   : (_ :: Bit 3)))
+					  ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					    d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					   ? d2e_dequeueFIFO_register
+					   : (_ :: Bit 1))) ==
+		      3'd0))
+		    ? sext (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[208:177]
+							       d2e_internalFIFOs_1.first[208:177])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1)))[31:20]
+		    : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							    d2e_internalFIFOs_1.first[212])
+					    ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					      d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					     ? d2e_dequeueFIFO_register
+					     : (_ :: Bit 1))) &&
+			((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first____d1116(...)[212]
+							      ? d2e_internalFIFOs_0_first____d1116(...)[211:209]
+							      : (_ :: Bit 3))
+							     (d2e_internalFIFOs_1_first____d1118(...)[212]
+							      ? d2e_internalFIFOs_1_first____d1118(...)[211:209]
+							      : (_ :: Bit 3)))
+					     ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					       d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+					      ? d2e_dequeueFIFO_register
+					      : (_ :: Bit 1))) ==
+			 3'd1))
+		       ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+								   d2e_internalFIFOs_1_first____d1118(...)[208:177])
+						   ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						     d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						    ? d2e_dequeueFIFO_register
+						    : (_ :: Bit 1)))[31:25], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[208:177]
+														 d2e_internalFIFOs_1_first____d1118(...)[208:177])
+												 ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+												   d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+												  ? d2e_dequeueFIFO_register
+												  : (_ :: Bit 1)))[11:7]}
+		       : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0.first[212]
+							       d2e_internalFIFOs_1.first[212])
+					       ((d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+						 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+						? d2e_dequeueFIFO_register
+						: (_ :: Bit 1))) &&
+			   ((PrimArrayDynSelect (PrimBuildArray (d2e_internalFIFOs_0_first__116_BIT_212___d1195(...)
+								 ? d2e_internalFIFOs_0_first__116_BITS_211_TO_209___d1199(...)
+								 : (_ :: Bit 3))
+								(d2e_internalFIFOs_1_first__118_BIT_212___d1196(...)
+								 ? d2e_internalFIFOs_1_first__118_BITS_211_TO_209___d1201(...)
+								 : (_ :: Bit 3)))
+						((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						  d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						 ? d2e_dequeueFIFO_register
+						 : (_ :: Bit 1))) ==
+			    3'd2))
+			  ? sext {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+								      d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+						      (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						       ? def__h29163(...)
+						       : (_ :: Bit 1)))[31], (PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+														 d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+												 (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+												  ? def__h29163(...)
+												  : (_ :: Bit 1)))[7], (PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+																	   x__h26585(...))[30:25], (PrimArrayDynSelect ARR_d2e_internalFIFOs_0_first__116_BITS_208_TO_ETC___d1130(...)
+																						       x__h26585(...))[11:8], 1'b0}
+			  : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first____d1116(...)[212]
+								  d2e_internalFIFOs_1_first____d1118(...)[212])
+						  ((d2e_dequeueFIFO_readBeforeLaterWrites_0_read____d348(...) &&
+						    d2e_dequeueFIFO_readBeforeLaterWrites_1_read____d349(...))
+						   ? d2e_dequeueFIFO_register
+						   : (_ :: Bit 1))) &&
+			      ((PrimArrayDynSelect (PrimBuildArray IF_d2e_internalFIFOs_0_first__116_BIT_212_195__ETC___d1200(...)
+								   IF_d2e_internalFIFOs_1_first__118_BIT_212_196__ETC___d1202(...))
+						   (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						    ? def__h29163(...)
+						    : (_ :: Bit 1))) ==
+			       3'd3))
+			     ? {(PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BITS_208_TO_177___d1128(...)
+								    d2e_internalFIFOs_1_first__118_BITS_208_TO_177___d1129(...))
+						    (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						     ? def__h29163(...)
+						     : (_ :: Bit 1)))[31:12], 12'b0}
+			     : (((PrimArrayDynSelect (PrimBuildArray d2e_internalFIFOs_0_first__116_BIT_212___d1195(...)
+								     d2e_internalFIFOs_1_first__118_BIT_212___d1196(...))
+						     (d2e_dequeueFIFO_readBeforeLaterWrites_0_read___ETC___d350(...)
+						      ? def__h29163(...)
+						      : (_ :: Bit 1))) &&
+				 ((PrimArrayDynSelect ARR_IF_d2e_internalFIFOs_0_first__116_BIT_212__ETC___d1203(...)
+						      x__h26585(...)) ==
+				  3'd4))
+				? sext {SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[31], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1379(...)[19:12], SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1414(...), SEL_ARR_d2e_internalFIFOs_0_first__116_BITS_20_ETC___d1415(...), 1'b0}
+				: 32'd0))))))[31:2] ==
+		  30'd1006649342))
+		? ! toMMIO_rv.port0__read[68]
+		: (! toDmem_rv.port0__read[68])))
+	    : squashed1.i_notFull) &&
+	   case (d2e_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		 d2e_dequeueFIFO_readBeforeLaterWrites_1.read)
+		? d2e_dequeueFIFO_register
+		: (_ :: Bit 1) of
+	   1'd0 -> d2e_internalFIFOs_0.i_notEmpty
+	   1'd1 -> d2e_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   (! starting)
+Blocking rules: (none)
+ 
+Rule: writeback2
+Predicate: case ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		 ? e2w_dequeueFIFO_register
+		 : (_ :: Bit 1)) +
+		1'd1 of
+	   1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+	   1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   (((! (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						    e2w_internalFIFOs_1.first[111:80])
+				    (((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				       e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				      ? e2w_dequeueFIFO_register
+				      : (_ :: Bit 1)) +
+				     1'd1))[6]) &&
+	     ((PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						  e2w_internalFIFOs_1.first[111:80])
+				  (((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)) +
+				   1'd1))[4:3] ==
+	      2'b0)) ||
+	    ((PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.notEmpty
+						 e2w_internalFIFOs_1.notEmpty)
+				 (((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				    e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				   ? e2w_dequeueFIFO_register
+				   : (_ :: Bit 1)) +
+				  1'd1)) &&
+	     ((e2w_want_deq2_readBeforeLaterWrites_0.read &&
+	       e2w_want_deq2_readBeforeLaterWrites_1.read)
+	      ? ! e2w_want_deq2_register
+	      : (_ :: Bit 1)) &&
+	     retired2.i_notFull)) &&
+	   (! starting) &&
+	   (writeback_1_done_readBeforeLaterWrites_1.read
+	    ? writeback_1_done_port_0.whas
+	      ? writeback_1_done_port_0.wget
+	      : writeback_1_done_register
+	    : (_ :: Bit 1))
+Blocking rules: (none)
+ 
+Rule: writeback1
+Predicate: (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.notEmpty
+					       e2w_internalFIFOs_1.notEmpty)
+			       ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				 e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				? e2w_dequeueFIFO_register
+				: (_ :: Bit 1))) &&
+	   ((e2w_want_deq1_readBeforeLaterWrites_0.read &&
+	     e2w_want_deq1_readBeforeLaterWrites_1.read)
+	    ? ! e2w_want_deq1_register
+	    : (_ :: Bit 1)) &&
+	   retired1.i_notFull &&
+	   case (e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		 e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		? e2w_dequeueFIFO_register
+		: (_ :: Bit 1) of
+	   1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+	   1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+	   _ -> 1'd1 &&
+	   ((PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						e2w_internalFIFOs_1.first[111:80])
+				((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				 ? e2w_dequeueFIFO_register
+				 : (_ :: Bit 1)))[6] ||
+	    (! ((PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						    e2w_internalFIFOs_1.first[111:80])
+				    ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				      e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				     ? e2w_dequeueFIFO_register
+				     : (_ :: Bit 1)))[4:3] ==
+		2'b0)) ||
+	    ((case (e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		    e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		   ? e2w_dequeueFIFO_register
+		   : (_ :: Bit 1) of
+	      1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+	      1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+	      _ -> 1'd1 &&
+	      (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[184]
+						  e2w_internalFIFOs_1.first[184])
+				  ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				    e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				   ? e2w_dequeueFIFO_register
+				   : (_ :: Bit 1))))
+	     ? fromMMIO_rv.port1__read[68]
+	     : fromDmem_rv.port1__read[68])) &&
+	   ((! (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[116]
+						   e2w_internalFIFOs_1.first[116])
+				   ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)))) ||
+	    (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						e2w_internalFIFOs_1.first[111:80])
+				((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				 ? e2w_dequeueFIFO_register
+				 : (_ :: Bit 1)))[6] ||
+	    (! ((PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[111:80]
+						    e2w_internalFIFOs_1.first[111:80])
+				    ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				      e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				     ? e2w_dequeueFIFO_register
+				     : (_ :: Bit 1)))[4:3] ==
+		2'b0)) ||
+	    ((({PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[189]
+						   e2w_internalFIFOs_1.first[189])
+				   ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)), PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[188:187]
+											e2w_internalFIFOs_1.first[188:187])
+									((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+									  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+									 ? e2w_dequeueFIFO_register
+									 : (_ :: Bit 1))} ==
+	       3'b0) ||
+	      ({PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[189]
+						   e2w_internalFIFOs_1.first[189])
+				   ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)), PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[188:187]
+											e2w_internalFIFOs_1.first[188:187])
+									((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+									  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+									 ? e2w_dequeueFIFO_register
+									 : (_ :: Bit 1))} ==
+	       3'b1) ||
+	      ({PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[189]
+						   e2w_internalFIFOs_1.first[189])
+				   ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)), PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[188:187]
+											e2w_internalFIFOs_1.first[188:187])
+									((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+									  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+									 ? e2w_dequeueFIFO_register
+									 : (_ :: Bit 1))} ==
+	       3'b100) ||
+	      ({PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[189]
+						   e2w_internalFIFOs_1.first[189])
+				   ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				     e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				    ? e2w_dequeueFIFO_register
+				    : (_ :: Bit 1)), PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[188:187]
+											e2w_internalFIFOs_1.first[188:187])
+									((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+									  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+									 ? e2w_dequeueFIFO_register
+									 : (_ :: Bit 1))} ==
+	       3'b101))
+	     ? (case (e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+		      e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		     ? e2w_dequeueFIFO_register
+		     : (_ :: Bit 1) of
+		1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+		1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+		_ -> 1'd1 &&
+		(PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[184]
+						    e2w_internalFIFOs_1.first[184])
+				    ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+				      e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				     ? e2w_dequeueFIFO_register
+				     : (_ :: Bit 1))))
+	       ? fromMMIO_rv.port1__read[68]
+	       : fromDmem_rv.port1__read[68]
+	     : ((! ({PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[189]
+							e2w_internalFIFOs_1.first[189])
+					((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					  e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+					 ? e2w_dequeueFIFO_register
+					 : (_ :: Bit 1)), PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[188:187]
+											     e2w_internalFIFOs_1.first[188:187])
+									     ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+									       e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+									      ? e2w_dequeueFIFO_register
+									      : (_ :: Bit 1))} ==
+		    3'b10)) ||
+		((case (e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+			e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+		       ? e2w_dequeueFIFO_register
+		       : (_ :: Bit 1) of
+		  1'd0 -> e2w_internalFIFOs_0.i_notEmpty
+		  1'd1 -> e2w_internalFIFOs_1.i_notEmpty
+		  _ -> 1'd1 &&
+		  (PrimArrayDynSelect (PrimBuildArray e2w_internalFIFOs_0.first[184]
+						      e2w_internalFIFOs_1.first[184])
+				      ((e2w_dequeueFIFO_readBeforeLaterWrites_0.read &&
+					e2w_dequeueFIFO_readBeforeLaterWrites_1.read)
+				       ? e2w_dequeueFIFO_register
+				       : (_ :: Bit 1))))
+		 ? fromMMIO_rv.port1__read[68]
+		 : fromDmem_rv.port1__read[68])))) &&
+	   (! starting)
+Blocking rules: (none)
+ 
+Rule: administrative_konata_commit1
+Predicate: retired1.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: administrative_konata_commit2
+Predicate: retired2.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: administrative_konata_flush1
+Predicate: squashed1.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: administrative_konata_flush2
+Predicate: squashed2.i_notEmpty
+Blocking rules: (none)
+ 
+Logical execution order: getIResp,
+			 getIResp2,
+			 getDResp,
+			 getMMIOResp,
+			 writeback1,
+			 writeback2,
+			 execute1,
+			 getDReq,
+			 getMMIOReq,
+			 fetch,
+			 getIReq,
+			 execute2,
+			 decode_1,
+			 decode_2,
+			 tick,
+			 administrative_konata_commit2,
+			 administrative_konata_commit1,
+			 administrative_konata_flush1,
+			 administrative_konata_flush2,
+			 do_tic_logging,
+			 fromImem_canonicalize,
+			 fromImem_enqueueFIFO_canonicalize,
+			 fromImem_dequeueFIFO_canonicalize,
+			 fromImem_want_enq1_canonicalize,
+			 fromImem_want_enq2_canonicalize,
+			 fromImem_want_deq1_canonicalize,
+			 fromImem_want_deq2_canonicalize,
+			 commit_id_canonicalize,
+			 globalEpoch_canonicalize,
+			 redirectPc_canonicalize,
+			 mispredicted_canonicalize,
+			 f2d_canonicalize,
+			 f2d_enqueueFIFO_canonicalize,
+			 f2d_dequeueFIFO_canonicalize,
+			 f2d_want_enq1_canonicalize,
+			 f2d_want_enq2_canonicalize,
+			 f2d_want_deq1_canonicalize,
+			 f2d_want_deq2_canonicalize,
+			 d2e_canonicalize,
+			 d2e_enqueueFIFO_canonicalize,
+			 d2e_dequeueFIFO_canonicalize,
+			 d2e_want_enq1_canonicalize,
+			 d2e_want_enq2_canonicalize,
+			 d2e_want_deq1_canonicalize,
+			 d2e_want_deq2_canonicalize,
+			 e2w_canonicalize,
+			 e2w_enqueueFIFO_canonicalize,
+			 e2w_dequeueFIFO_canonicalize,
+			 e2w_want_enq1_canonicalize,
+			 e2w_want_enq2_canonicalize,
+			 e2w_want_deq1_canonicalize,
+			 e2w_want_deq2_canonicalize,
+			 decode_1_done_canonicalize,
+			 execute_1_done_canonicalize,
+			 execute_1_squashed_canonicalize,
+			 writeback_1_done_canonicalize,
+			 exec_1_alu_canonicalize,
+			 is_mem_inst_canonicalize,
+			 double_retired_canonicalize,
+			 double_squashed_canonicalize
+
+=============================================
